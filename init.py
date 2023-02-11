@@ -35,6 +35,7 @@ while True:
 
     # Mostrar el fotograma
     cv2.imshow("Frame", frame)
+    cv2.imshow("Edges", edges)
 
     # Salir si se presiona la tecla 'q'
     if cv2.waitKey(1) & 0xFF == ord('q'):
