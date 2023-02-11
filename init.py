@@ -1,7 +1,14 @@
 import cv2
+import numpy as np
 
 # Inicializar la cámara
 cap = cv2.VideoCapture(0)
+
+# Distancia focal de la cámara (en pixels)
+focal_length = 500
+
+# Altura de la cámara (en metros)
+camera_height = 1.5
 
 while True:
     # Capturar un fotograma
@@ -28,12 +35,17 @@ while True:
         x, y, w, h = cv2.boundingRect(cnt)
         length = w # asumir que el objeto es rectangular y está orientado horizontalmente
         width = h # asumir que el objeto es rectangular y está orientado horizontalmente
+
+        # Calcular la distancia a la que se encuentra el objeto
+        distance = focal_length * camera_height / width
+
         print("Length:", length, "pixels")
         print("Width:", width, "pixels")
+        print("Distance:", distance, "meters")
     else:
         print("No se ha encontrado el objeto en la imagen")
 
-    # Mostrar el fotograma
+    # Mostrar el fotograma original y el resultado de la detección de bordes
     cv2.imshow("Frame", frame)
     cv2.imshow("Edges", edges)
 
