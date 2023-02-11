@@ -14,7 +14,7 @@ while True:
     edges = cv2.Canny(gray, 50, 150)
 
     # Buscar contornos en el fotograma
-    contours, hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2:]
 
     # Seleccionar el contorno que corresponde al objeto
     cnt = None
